@@ -1,9 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
-
-fn calculate(input: String) -> i32 {
+fn calculate(input: &str) -> i32 {
     let case: Vec<&str> = input.split(&['-', ','][..]).collect();
     let i1: i32 = case[0].parse().unwrap();
     let i2: i32 = case[1].parse().unwrap();
@@ -29,14 +24,11 @@ fn calculate(input: String) -> i32 {
 }
 
 fn main() {
-    let file = File::open("./input.txt").unwrap();
-    let reader = BufReader::new(file);
-
     let mut fully_contain = 0;
 
-    for (_, line) in reader.lines().enumerate() {
-        let case = line.unwrap();
-        fully_contain += calculate(case);
-    }
+    include_str!("../input.txt")
+        .lines()
+        .for_each(|line| fully_contain += calculate(line));
+
     println!("{}", fully_contain);
 }
