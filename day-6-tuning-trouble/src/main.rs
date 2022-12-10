@@ -13,6 +13,7 @@ fn calculate(input: &str, len: usize) -> usize {
     }
     result
 }
+
 fn main() {
     let input = include_str!("../input.txt");
     let answer_part1 = calculate(input, 4);
